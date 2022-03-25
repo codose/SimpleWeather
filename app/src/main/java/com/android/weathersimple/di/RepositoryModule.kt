@@ -5,12 +5,12 @@ import com.android.weathersimple.data.repository.WeatherRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ViewModelComponent
+import dagger.hilt.components.SingletonComponent
 
 @Module
-@InstallIn(ViewModelComponent::class)
+@InstallIn(SingletonComponent::class)
 abstract class RepositoryModule {
 
     @Binds
-    abstract fun bindGithubRepository(githubSearchRepositoryImpl: WeatherRepositoryImpl): WeatherRepository
+    abstract fun bindWeatherRepositoryImpl(weatherRepositoryImpl: WeatherRepositoryImpl): WeatherRepository
 }

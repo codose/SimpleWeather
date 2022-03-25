@@ -64,7 +64,7 @@ dependencies {
     implementation(Compose.materialIconsCore)
     implementation(Compose.materialIconExtended)
     implementation(Compose.accompanistPermission)
-    implementation("androidx.lifecycle:lifecycle-process:2.4.1")
+    implementation("androidx.lifecycle:lifecycle-process:2.2.0")
     androidTestImplementation(Compose.composeUiTest)
     implementation(Compose.navigation)
 
@@ -113,6 +113,10 @@ dependencies {
 
     implementation(Compose.coil)
     implementation(Compose.paging)
+
+    implementation(WorkManager.work)
+    implementation(WorkManager.hilt)
+    kapt(WorkManager.hiltKapt)
 }
 
 jacoco {

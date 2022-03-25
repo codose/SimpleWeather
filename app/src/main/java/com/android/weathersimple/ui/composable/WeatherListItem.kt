@@ -33,12 +33,10 @@ import com.android.weathersimple.ui.model.WeatherItem
 import com.android.weathersimple.ui.theme.Gray
 import com.android.weathersimple.ui.theme.Yellow
 import com.android.weathersimple.utils.Constants.CARD_ITEM_TEXT_TAG
-import timber.log.Timber
 
 @ExperimentalCoilApi
 @Composable
 fun WeatherListItem(weatherItem: WeatherItem, onItemSelect: (WeatherItem) -> Unit, onItemFav: (Int, Boolean) -> Unit) {
-    Timber.e(weatherItem.weatherImage)
     Card(
         modifier = Modifier
             .testTag(CARD_ITEM_TEXT_TAG)
