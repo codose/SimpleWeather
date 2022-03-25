@@ -4,7 +4,6 @@ import com.android.weathersimple.data.local.entities.WeatherCityEntity
 import com.android.weathersimple.data.model.all.WeatherDetailsSchema
 import com.android.weathersimple.data.model.all.WeatherSchema
 import com.android.weathersimple.domain.model.WeatherDomain
-import com.android.weathersimple.ui.model.WeatherItem
 import io.mockk.every
 import io.mockk.mockk
 import org.junit.Assert.*
@@ -54,18 +53,6 @@ class WeatherMapperTest {
         isFavourite = false
     )
 
-    private val mockedWeatherItem = WeatherItem(
-        id = mockedId,
-        countryCode = mockedCountryCode,
-        city = mockedCity,
-        temp = "$mockedTemp \u2103",
-        weatherName = mockedWeatherName,
-        weatherImage = "https://openweathermap.org/img/w/$mockedIconUrl.png",
-        date = "Wed, 07 Jan 1970",
-        time = "03:11",
-        isFavourite = false
-    )
-
     @Test
     fun `test schema mapping`() {
         val actualResult = sut.mapToDomain(mockedWeatherSchema)
@@ -74,11 +61,8 @@ class WeatherMapperTest {
 
     @Test
     fun `test domain mapping`() {
-        val actualWeatherItem = sut.mapToPresentation(mockedWeatherDomain)
         val actualWeatherEntity = sut.mapToEntity(mockedWeatherDomain)
         val actualDomain = sut.mapToDomain(mockedWeatherEntity)
-        assertEquals(mockedWeatherItem.date, actualWeatherItem.date)
-        assertEquals(mockedWeatherItem.time, actualWeatherItem.time)
         assertEquals(mockedWeatherEntity, actualWeatherEntity)
         assertEquals(mockedWeatherDomain, actualDomain)
     }
