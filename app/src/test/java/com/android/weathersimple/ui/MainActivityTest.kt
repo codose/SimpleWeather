@@ -1,6 +1,7 @@
 package com.android.weathersimple.ui
 
 import android.os.Build
+import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onAllNodesWithTag
 import androidx.compose.ui.test.onFirst
@@ -13,6 +14,7 @@ import com.android.weathersimple.CoroutineTestRule
 import com.android.weathersimple.dispatchers.SuccessDispatcher
 import com.android.weathersimple.utils.Constants
 import com.android.weathersimple.utils.Constants.CARD_ITEM_TEXT_TAG
+import com.android.weathersimple.utils.Constants.DETAILS_TEST_TAG
 import com.jakewharton.espresso.OkHttp3IdlingResource
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
@@ -65,7 +67,7 @@ class MainActivityTest {
     }
 
     @Test
-    fun `given when application is launched and a search is performed, then it should show the list`() = runTest {
+    fun `given when application is launched and the weather data is available, then it should show the list`() = runTest {
         mockWebServer.dispatcher = SuccessDispatcher()
         composeTestRule.apply {
             activityRule.scenario.onActivity {
@@ -73,9 +75,12 @@ class MainActivityTest {
                 textField.performClick()
                 textField.performTextInput("Query")
                 textField.performImeAction()
-                advanceTimeBy(300)
+                advanceTimeBy(800)
                 sleep(5000)
                 onAllNodesWithTag(CARD_ITEM_TEXT_TAG).onFirst().assertExists()
+                onAllNodesWithTag(CARD_ITEM_TEXT_TAG).onFirst().performClick()
+                advanceTimeBy(300)
+                onNodeWithTag(DETAILS_TEST_TAG).assertIsDisplayed()
             }
         }
     }

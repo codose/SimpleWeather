@@ -1,6 +1,7 @@
 package com.android.weathersimple.domain.mapper
 
 import com.android.weathersimple.data.local.entities.WeatherCityEntity
+import com.android.weathersimple.data.model.all.WeatherDetailsSchema
 import com.android.weathersimple.data.model.all.WeatherSchema
 import com.android.weathersimple.domain.model.WeatherDomain
 import com.android.weathersimple.ui.model.WeatherItem
@@ -26,8 +27,9 @@ class WeatherMapperTest {
         every { name } returns mockedCity
         every { main.temp } returns mockedTemp
         every { dt } returns mockedDateTime
-        every { weather.first().main } returns mockedWeatherName
-        every { weather.first().icon } returns mockedIconUrl
+        every { weather } returns listOf(
+            WeatherDetailsSchema(description = "", icon = mockedIconUrl, id = 0, main = mockedWeatherName)
+        )
     }
 
     private val mockedWeatherDomain = WeatherDomain(
@@ -59,8 +61,8 @@ class WeatherMapperTest {
         temp = "$mockedTemp \u2103",
         weatherName = mockedWeatherName,
         weatherImage = "https://openweathermap.org/img/w/$mockedIconUrl.png",
-        date = "mockedDateTime.toLong()",
-        time = "526726762",
+        date = "Wed, 07 Jan 1970",
+        time = "03:11",
         isFavourite = false
     )
 

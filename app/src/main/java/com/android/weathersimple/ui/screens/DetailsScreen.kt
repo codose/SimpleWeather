@@ -21,6 +21,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -32,12 +33,13 @@ import com.android.weathersimple.ui.composable.WeatherForecastList
 import com.android.weathersimple.ui.model.WeatherItem
 import com.android.weathersimple.ui.screens.viewmodel.DetailsViewModel
 import com.android.weathersimple.ui.theme.DarkBlue
+import com.android.weathersimple.utils.Constants.DETAILS_TEST_TAG
 
 @Composable
 fun DetailsScreen(weatherItem: WeatherItem, onBack: () -> Unit) {
     val detailsViewModel = hiltViewModel<DetailsViewModel>()
     val id = weatherItem.id
-    Box(modifier = Modifier.background(DarkBlue)) {
+    Box(modifier = Modifier.background(DarkBlue).testTag(DETAILS_TEST_TAG)) {
         Box(modifier = Modifier.padding(20.dp)) {
             LaunchedEffect(key1 = "firstLaunch") {
                 detailsViewModel.getWeatherDetails(id)

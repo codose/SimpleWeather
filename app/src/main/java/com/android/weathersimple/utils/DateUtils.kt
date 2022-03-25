@@ -5,7 +5,7 @@ import java.util.Calendar
 import java.util.Locale
 
 object DateUtils {
-    private const val YYYY_MM_DD = "E, dd MMM yyyy "
+    private const val YYYY_MM_DD = "E, dd MMM yyyy"
 
     private const val HH_MM = "HH:mm"
 

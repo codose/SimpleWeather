@@ -7,9 +7,10 @@ import okhttp3.mockwebserver.RecordedRequest
 
 class SuccessDispatcher : Dispatcher() {
     override fun dispatch(request: RecordedRequest): MockResponse {
-        return when (request.requestUrl?.encodedPath) {
-            "group" -> MockResponse().setResponseCode(200).setBody(FileReader.readStringFromFile("success_response.json"))
-            else -> MockResponse().setResponseCode(400)
+        return if (request.requestUrl?.encodedPath?.startsWith("/group") == true) {
+            MockResponse().setResponseCode(200).setBody(FileReader.readStringFromFile("success_response.json"))
+        } else {
+            MockResponse().setResponseCode(200).setBody(FileReader.readStringFromFile("success_response.json"))
         }
     }
 }
