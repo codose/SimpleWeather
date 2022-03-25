@@ -58,7 +58,7 @@ class WeatherMapperTest {
         id = mockedId,
         countryCode = mockedCountryCode,
         city = mockedCity,
-        temp = "$mockedTemp \u2103",
+        temp = "$mockedTemp ℃",
         weatherName = mockedWeatherName,
         weatherImage = "https://openweathermap.org/img/w/$mockedIconUrl.png",
         date = "Wed, 07 Jan 1970",
