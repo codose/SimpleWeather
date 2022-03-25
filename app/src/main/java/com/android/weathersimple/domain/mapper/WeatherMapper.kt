@@ -24,7 +24,7 @@ class WeatherMapper @Inject constructor() {
         id = domain.id,
         countryCode = domain.countryCode,
         city = domain.city,
-        temp = "${domain.temp} \u2103",
+        temp = "${domain.temp} ℃",
         weatherName = domain.weatherName,
         weatherImage = "https://openweathermap.org/img/w/${domain.weatherImage}.png",
         date = domain.dateTime.times(MILLIS_IN_MIN).formatMillisToDateString(),
