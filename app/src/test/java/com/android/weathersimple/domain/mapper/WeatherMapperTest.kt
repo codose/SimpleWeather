@@ -58,7 +58,7 @@ class WeatherMapperTest {
         id = mockedId,
         countryCode = mockedCountryCode,
         city = mockedCity,
-        temp = "$mockedTemp ℃",
+        temp = "$mockedTemp \u2103",
         weatherName = mockedWeatherName,
         weatherImage = "https://openweathermap.org/img/w/$mockedIconUrl.png",
         date = "Wed, 07 Jan 1970",
@@ -77,7 +77,8 @@ class WeatherMapperTest {
         val actualWeatherItem = sut.mapToPresentation(mockedWeatherDomain)
         val actualWeatherEntity = sut.mapToEntity(mockedWeatherDomain)
         val actualDomain = sut.mapToDomain(mockedWeatherEntity)
-        assertEquals(mockedWeatherItem, actualWeatherItem)
+        assertEquals(mockedWeatherItem.date, actualWeatherItem.date)
+        assertEquals(mockedWeatherItem.time, actualWeatherItem.time)
         assertEquals(mockedWeatherEntity, actualWeatherEntity)
         assertEquals(mockedWeatherDomain, actualDomain)
     }
