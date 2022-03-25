@@ -64,7 +64,6 @@ Pull the code on this branch, import into Android Studio, from there you can run
 android project project or run ./gradlew assembleDebug. Further notes can be found here https://developer.android.com/studio/build/building-cmdline#DebugMode
 
 ## Screenshots
-![Screenshot 1](screenshots/1.png "Title")
+![Screenshot 1](screenshots/1.png "Main Screen")
+![Screenshot 2](screenshots/2.png "Details Screen")
 
-## Test Coverage
-![Test Coverage](screenshots/img.png "Test Coverage")
